@@ -5,13 +5,13 @@
 
   window.SSS = {
     init: function() {
-      this.checkLogged();
+      this.checkUserAuthentication);
       this.login();
       this.logout();
       this.ajaxLink();
     },
 
-    checkLogged: function() {
+    checkUserAuthentication: function() {
       $.ajax({
         url:pathSite + "/services/session/token",
         type:"get",
@@ -26,14 +26,9 @@
             $('#form-login').hide();
           }
           else{
+            $.cookie('X-CSRF-Token', null);
             $('.content').hide();
           }
-
-          // $.ajaxSetup({
-          //   beforeSend: function(xhr) {
-          //     request.setRequestHeader("X-CSRF-Token", token);
-          //   }
-          // });
         }
       });
     },
@@ -71,7 +66,7 @@
                  crossDomain: true,
                  beforeSend: function (request) {
                    request.setRequestHeader("X-CSRF-Token", token);
-                   $.cookie('X-CSRF-Token', token);
+                   $.cookie('X-CSRF-Token', token, { expires: 365 });
                  },
                  error: function (jqXHR, textStatus, errorThrown) {
                    alert(errorThrown);
