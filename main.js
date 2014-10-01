@@ -5,7 +5,7 @@
 
   window.SSS = {
     init: function() {
-      this.checkUserAuthentication);
+      this.checkUserAuthentication();
       this.login();
       this.logout();
       this.ajaxLink();
