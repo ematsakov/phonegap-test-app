@@ -1,8 +1,8 @@
 (function( $ ) {
 
   var endPoint = 'sss-rest-api';
-  //var pathUrl = 'http://dev-start-school-smart.gotpantheon.com';
-  var pathUrl = 'http://drupal7.dev/start-school-smart';
+  var pathUrl = 'http://dev-start-school-smart.gotpantheon.com';
+  //var pathUrl = 'http://drupal7.dev/start-school-smart';
 
   window.SSS = {
     init: function() {
