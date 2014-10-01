@@ -7,29 +7,29 @@
         <title>Drupal Test Login</title>
         <script src="./misc/jquery.js"></script>
         <script src="./misc/jquery.cookie.js"></script>
-        <script src="main.js"></script>
+        <script src="./main.js"></script>
     </head>
     <body>
-        <form id="form-login" method="post" action="http://drupal7.dev/sss/sss-rest-api/user/login.json">
+        <form id="form-login" method="post" rel="api-url" action="/sss-rest-api/user/login.json">
             <input type="text" name="username">
             <input type="text" name="password">
             <input type="submit" name="login" value="login">
         </form>
 
         <div class="content">
-          <form id="form-logout" method="post" action="http://drupal7.dev/sss/sss-rest-api/user/logout.json">
+          <form id="form-logout" method="post" rel="api-url" action="/sss-rest-api/user/logout.json">
               <input type="submit" name="logout" value="logout">
           </form>
 
           <div>
-            <a class="ajax" href="http://drupal7.dev/sss/sss-rest-api/activity.json?year=2014&week=38">Get all activity (week = 38, year = 2014)</a>
+            <a class="ajax" rel="api-url" href="/sss-rest-api/activity.json?year=2014&week=38">Get all activity (week = 38, year = 2014)</a>
             <div class="response">
               <textarea cols="100" rows="10"></textarea>
             </div>
           </div>
 
           <div>
-            <a class="ajax" href="http://drupal7.dev/sss/sss-rest-api/activity/saved.json?year=2014&week=39">Get all activity saved (week = 39, year = 2014)</a>
+            <a class="ajax" rel="api-url" href="/sss-rest-api/activity/saved.json?year=2014&week=39">Get all activity saved (week = 39, year = 2014)</a>
             <div class="response">
               <textarea cols="100" rows="10"></textarea>
             </div>

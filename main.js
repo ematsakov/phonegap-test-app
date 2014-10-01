@@ -1,19 +1,37 @@
 (function( $ ) {
 
   var endPoint = 'sss-rest-api';
-  var pathSite = 'http://drupal7.dev/sss';
+  //var pathUrl = 'http://dev-start-school-smart.gotpantheon.com';
+  var pathUrl = 'http://drupal7.dev/start-school-smart';
 
   window.SSS = {
     init: function() {
+      this.processApiUrls();
       this.checkUserAuthentication();
       this.login();
       this.logout();
       this.ajaxLink();
     },
 
+    processApiUrls: function() {
+      $('[rel="api-url"]').each(function() {
+        //link
+        if($(this).attr('href')){
+          var href = pathUrl + $(this).attr('href');
+          $(this).attr('href', href);
+        }
+
+        //form
+        if($(this).attr('action')){
+          var action = pathUrl + $(this).attr('action');
+          $(this).attr('action', action);
+        }
+      });
+    },
+
     checkUserAuthentication: function() {
       $.ajax({
-        url:pathSite + "/services/session/token",
+        url:pathUrl + "/services/session/token",
         type:"get",
         dataType:"text",
         crossDomain: true,
@@ -50,7 +68,7 @@
 
             // Obtain session token.
             $.ajax({
-             url:pathSite + "/services/session/token",
+             url:pathUrl + "/services/session/token",
              type:"get",
              dataType:"text",
              crossDomain: true,
@@ -60,7 +78,7 @@
              success: function (token) {
                // Call system connect with session token.
                $.ajax({
-                 url: pathSite + "/" + endPoint + "/system/connect.json",
+                 url: pathUrl + "/" + endPoint + "/system/connect.json",
                  type: "post",
                  dataType: "json",
                  crossDomain: true,
@@ -93,7 +111,7 @@
         var form = $(this);
         var formURL = form.attr("action");
         $.ajax({
-          url:pathSite + "/services/session/token",
+          url:pathUrl + "/services/session/token",
           type:"get",
           dataType:"text",
           crossDomain: true,
