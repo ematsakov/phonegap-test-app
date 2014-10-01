@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 	<widget xmlns = "http://www.w3.org/ns/widgets"
 		xmlns:gap = "http://phonegap.com/ns/1.0"
-		id        = "com.questionbridge.app"
+		id        = "com.testapp.app"
 		versionCode="4"
-		version   = "1.0.4">
+		version   = "1.0.0">
 
 		<name>Test App</name>
 		<description>Test mobile application</description>
@@ -12,7 +12,7 @@
 		<gap:platform name="ios" />
 		<gap:platform name="android" />
 
-		<preference name="phonegap-version" value="3.1.0" />
+		<preference name="phonegap-version" value="3.5.0" />
 		<preference name="orientation" value="portrait" />
 		<preference name="prerendered-icon" value="true" />
 		<preference name="webviewbounce" value="false" />
@@ -23,8 +23,6 @@
 
 		<access origin="*" />
 
-		<gap:plugin name="nl.x-services.plugins.socialsharing" />
-		<!-- <gap:plugin name="nl.x-services.plugins.ipadlandscapeenabler" /> -->
 		<preference name="orienation" value="portrait" />
 
 		<gap:config-file platform="ios" parent="UISupportedInterfaceOrientations~ipad" overwrite="false">
