@@ -16,6 +16,7 @@
         url:pathSite + "/services/session/token",
         type:"get",
         dataType:"text",
+        crossDomain: true,
         error:function (jqXHR, textStatus, errorThrown) {
           alert(errorThrown);
         },
@@ -46,6 +47,7 @@
           url : formURL,
           type: "POST",
           data : postData,
+          crossDomain: true,
           success:function(data, textStatus, jqXHR) {
             sessName = data.session_name;
             sessId = data.sessid;
@@ -56,6 +58,7 @@
              url:pathSite + "/services/session/token",
              type:"get",
              dataType:"text",
+             crossDomain: true,
              error:function (jqXHR, textStatus, errorThrown) {
                alert(errorThrown);
              },
@@ -65,6 +68,7 @@
                  url: pathSite + "/" + endPoint + "/system/connect.json",
                  type: "post",
                  dataType: "json",
+                 crossDomain: true,
                  beforeSend: function (request) {
                    request.setRequestHeader("X-CSRF-Token", token);
                    $.cookie('X-CSRF-Token', token);
@@ -97,6 +101,7 @@
           url:pathSite + "/services/session/token",
           type:"get",
           dataType:"text",
+          crossDomain: true,
           error:function (jqXHR, textStatus, errorThrown) {
            alert(errorThrown);
           },
@@ -104,6 +109,7 @@
             $.ajax({
               url : formURL,
               type: "POST",
+              crossDomain: true,
               beforeSend: function (request) {
                 request.setRequestHeader("X-CSRF-Token", token);
               },
@@ -128,6 +134,7 @@
         $.ajax({
           url : url,
           type: "GET",
+          crossDomain: true,
           success:function(data, textStatus, jqXHR){
             link.next().find('textarea').val(JSON.stringify(data));
           },
