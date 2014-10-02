@@ -39,12 +39,13 @@
           alert(errorThrown);
         },
         success: function (token) {
-          if(token == $.cookie('X-CSRF-Token')){
+          var saveToken = localStorage.getItem('X-CSRF-Token');
+          if(token == saveToken){
           //logged
             $('#form-login').hide();
           }
           else{
-            $.cookie('X-CSRF-Token', null);
+            localStorage.setItem( 'X-CSRF-Token', null );
             $('.content').hide();
           }
         }
@@ -84,7 +85,7 @@
                  crossDomain: true,
                  beforeSend: function (request) {
                    request.setRequestHeader("X-CSRF-Token", token);
-                   $.cookie('X-CSRF-Token', token, { expires: 365 });
+                   localStorage.setItem( 'X-CSRF-Token', token );
                  },
                  error: function (jqXHR, textStatus, errorThrown) {
                    alert(errorThrown);
@@ -127,7 +128,7 @@
                 request.setRequestHeader("X-CSRF-Token", token);
               },
               success:function(data, textStatus, jqXHR){
-                $.cookie('X-CSRF-Token', null);
+                localStorage.setItem( 'X-CSRF-Token', null );
                 $('.content textarea').val('');
                 $('.content').hide();
                 $('#form-login').show();
