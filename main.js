@@ -10,6 +10,7 @@
       this.checkUserAuthentication();
       this.login();
       this.logout();
+      this.newUser();
       this.ajaxLink();
     },
 
@@ -42,7 +43,7 @@
           var saveToken = localStorage.getItem('X-CSRF-Token');
           if(token == saveToken){
           //logged
-            $('#form-login').hide();
+            $('.login-register-forms').hide();
           }
           else{
             localStorage.setItem( 'X-CSRF-Token', null );
@@ -92,7 +93,7 @@
                  },
                  success: function (data) {
                    alert('Hello user #' + data.user.uid);
-                   form.hide();
+                   $('.login-register-forms').hide();
                    $('.content').show();
                  }
                });
@@ -129,9 +130,9 @@
               },
               success:function(data, textStatus, jqXHR){
                 localStorage.setItem( 'X-CSRF-Token', null );
-                $('.content textarea').val('');
+                $('.content textarea, .login-register-forms input[type=text]').val('');
                 $('.content').hide();
-                $('#form-login').show();
+                $('.login-register-forms').show();
               },
             });
           }
@@ -154,6 +155,27 @@
           },
         });
 
+      });
+    },
+
+    newUser: function() {
+      $('#new-user').submit(function(e) {
+        var form = $(this);
+        var formURL = form.attr("action");
+        $.ajax({
+          url:formURL,
+          type:"POST",
+          data: form.serialize(),
+          crossDomain: true,
+          error:function (jqXHR, textStatus, errorThrown) {
+            alert(jqXHR.statusText);
+          },
+          success: function (response) {
+            alert('Congratulations!Your id:' + response.uid);
+            $('.login-register-forms input[type=text]').val('');
+          }
+        });
+        e.preventDefault(); //STOP default action
       });
     }
   }
