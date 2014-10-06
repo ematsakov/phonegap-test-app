@@ -188,6 +188,7 @@
           url:formURL,
           type:"PUT",
           data: form.serialize(),
+          dataType: 'json',
           crossDomain: true,
           error:function (jqXHR, textStatus, errorThrown) {
             alert(jqXHR.statusText);
