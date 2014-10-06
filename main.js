@@ -1,8 +1,8 @@
 (function( $ ) {
 
   var endPoint = 'sss-rest-api';
-  var pathUrl = 'http://dev-start-school-smart.gotpantheon.com';
-  //var pathUrl = 'http://drupal7.dev/start-school-smart';
+  //var pathUrl = 'http://dev-start-school-smart.gotpantheon.com';
+  var pathUrl = 'http://drupal7.dev/start-school-smart';
 
   window.SSS = {
     init: function() {
@@ -11,6 +11,7 @@
       this.login();
       this.logout();
       this.newUser();
+      this.updateUser();
       this.ajaxLink();
     },
 
@@ -173,6 +174,28 @@
           success: function (response) {
             alert('Congratulations!Your id:' + response.uid);
             $('.login-register-forms input[type=text]').val('');
+          }
+        });
+        e.preventDefault(); //STOP default action
+      });
+    },
+
+    updateUser: function(){
+      $('#update-user').submit(function(e) {
+        var form = $(this);
+        var formURL = form.attr("action");
+        $.ajax({
+          url:formURL,
+          type:"put",
+          data: form.serialize(),
+          crossDomain: true,
+          error:function (jqXHR, textStatus, errorThrown) {
+            alert(jqXHR.statusText);
+          },
+          success: function (response) {
+            //console.log(response);
+            alert('Congratulations!Update');
+            //$('.login-register-forms input[type=text]').val('');
           }
         });
         e.preventDefault(); //STOP default action
