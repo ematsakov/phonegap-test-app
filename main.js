@@ -198,9 +198,7 @@
             alert(jqXHR.statusText);
           },
           success: function (response) {
-            //console.log(response);
-            alert(response);
-            //$('.login-register-forms input[type=text]').val('');
+            alert('Congratulations!Update User Profile');
           }
         });
         e.preventDefault(); //STOP default action
