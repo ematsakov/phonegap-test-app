@@ -184,9 +184,10 @@
       $('#update-user').submit(function(e) {
         var form = $(this);
         var formURL = form.attr("action");
+        alert(formURL);
         $.ajax({
           url:formURL,
-          type:"put",
+          type:"PUT",
           data: form.serialize(),
           crossDomain: true,
           error:function (jqXHR, textStatus, errorThrown) {
