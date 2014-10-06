@@ -194,7 +194,7 @@
           },
           success: function (response) {
             //console.log(response);
-            alert('Congratulations!Update');
+            alert(response);
             //$('.login-register-forms input[type=text]').val('');
           }
         });
