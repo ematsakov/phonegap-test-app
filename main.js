@@ -190,6 +190,10 @@
           data: form.serialize(),
           dataType: 'json',
           crossDomain: true,
+          beforeSend: function (request) {
+            var token = localStorage.getItem('X-CSRF-Token');
+            request.setRequestHeader("X-CSRF-Token", token);
+          },
           error:function (jqXHR, textStatus, errorThrown) {
             alert(jqXHR.statusText);
           },
