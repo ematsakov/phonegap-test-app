@@ -184,7 +184,6 @@
       $('#update-user').submit(function(e) {
         var form = $(this);
         var formURL = form.attr("action");
-        alert(formURL);
         $.ajax({
           url:formURL,
           type:"PUT",
